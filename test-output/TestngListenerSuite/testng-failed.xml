@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [TestngListenerSuite]">
+  <listeners>
+    <listener class-name="com.inetBanking.rough.listeners.Listeners"/>
+  </listeners>
+  <test thread-count="5" name="loginTest(failed)">
+    <classes>
+      <class name="com.inetBanking.rough.listeners.LoginTest">
+        <methods>
+          <include name="loginByFacebook"/>
+        </methods>
+      </class> <!-- com.inetBanking.rough.listeners.LoginTest -->
+    </classes>
+  </test> <!-- loginTest(failed) -->
+</suite> <!-- Failed suite [TestngListenerSuite] -->
