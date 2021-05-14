@@ -20,6 +20,8 @@ import org.testng.annotations.Parameters;
 
 import com.inetBanking.utilities.ReadConfig;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class BaseClass {
 
 	ReadConfig readconfig = new ReadConfig();
@@ -35,17 +37,11 @@ public class BaseClass {
 
 		logger = Logger.getLogger("ebanking");
 		PropertyConfigurator.configure("Log4j.properties");
+		WebDriverManager.chromedriver().setup();
+		logger.info("latest chromedriver downloaded.");
+		driver=new ChromeDriver();
+		logger.info("chromedriver loaded");
 
-		if (br.equals("chrome")) {
-			System.setProperty("webdriver.chrome.driver", readconfig.getChromePath());
-			driver = new ChromeDriver();
-		} else if (br.equals("firefox")) {
-			System.setProperty("webdriver.gecko.driver", readconfig.getFireFoxPath());
-			driver = new FirefoxDriver();
-		}else if(br.equals("ie")) {
-			System.setProperty("webdriver.ie.driver", readconfig.getIEPath());
-			driver = new InternetExplorerDriver();
-		}
 		driver.get(baseURL);
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
